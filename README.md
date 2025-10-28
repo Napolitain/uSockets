@@ -9,6 +9,37 @@ Based on µSockets, apps like µWebSockets can run on many platforms, over many 
 
 Hit `make examples` to get started.
 
+## Building with Make
+The traditional build system uses Make:
+```bash
+make                    # Build the uSockets.a static library
+make examples          # Build all example programs
+WITH_OPENSSL=1 make    # Build with OpenSSL support
+```
+
+## Building with CMake
+CMake is also supported with identical functionality:
+```bash
+mkdir build && cd build
+cmake ..                                        # Configure basic build
+cmake -DBUILD_EXAMPLES=ON ..                   # Configure with examples
+cmake -DWITH_OPENSSL=ON -DBUILD_EXAMPLES=ON .. # Configure with OpenSSL and examples
+make                                           # Build
+```
+
+Available CMake options:
+- `WITH_LTO` - Enable Link Time Optimization (default: ON, except Windows)
+- `WITH_OPENSSL` - Enable OpenSSL 1.1+ support
+- `WITH_BORINGSSL` - Enable BoringSSL support (preferred over OpenSSL)
+- `WITH_WOLFSSL` - Enable WolfSSL 4.2.0 support
+- `WITH_QUIC` - Enable QUIC support
+- `WITH_IO_URING` - Enable io_uring support
+- `WITH_LIBUV` - Enable libuv as event-loop
+- `WITH_ASIO` - Enable Boost ASIO as event-loop
+- `WITH_GCD` - Enable libdispatch (GCD) as event-loop
+- `WITH_ASAN` - Enable AddressSanitizer
+- `BUILD_EXAMPLES` - Build example programs (default: OFF)
+
 ## Lightweight or featureful
 In its minimal, TCP-only, configuration µSockets has no dependencies other than the very OS kernel and compiles down to a tiny binary. In its full configuration it depends on BoringSSL, lsquic and potentially some event-loop library.
 

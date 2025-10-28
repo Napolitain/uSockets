@@ -1,0 +1,32 @@
+# Object files
+*.o
+
+# Static libraries
+*.a
+
+# Executables
+echo_server
+hammer_test
+hammer_test_unix
+http3_client
+http3_server
+http_load_test
+http_server
+peer_verify_test
+tcp_load_test
+tcp_server
+udp_benchmark
+swift_http_server
+
+# CMake build artifacts
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile.cmake
+*.cmake
+!CMakeLists.txt
+build/
+out/
+
+# Certificates
+.certs/
